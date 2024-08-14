@@ -6,30 +6,23 @@ router = APIRouter()
 
 
 DEFAULT_INSTRUCTION = """
-Extract a Main Single blog post with its full content and necessary data from the given source. Return the result as a JSON object.
-
-Ignore related or additional articles.
-
-JSON Example
-
+Extract the main single blog post with its full content and necessary data from the given source. The main blog post is the first one in the data array (index 0). Return the result as a JSON object.
+Ignore any additional articles or blog posts in the array.
+JSON Example:
 {
-  "date": "X days ago",  // Could be "X days ago", "Y hours ago", "Z minutes ago", or an exact date
-  "headline": "Title of the blog post",
-  "content": "Full content of the blog post...",
-  "media": [
-    {
-      "type": "image",
-      "url": "https://example.com/image.jpg",
-      "title": "Image Title"
-    },
-    {
-      "type": "video",
-      "url": "https://example.com/video.mp4",
-      "title": "Video Title"
-    }
-  ],
-  "tags": ["array of blog tags"]
+"date": "X days ago",  // Could be "X days ago", "Y hours ago", "Z minutes ago", or an exact date
+"headline": "Title of the main blog post",
+"content": "Full content of the main blog post...",
+"media": [
+{
+"type": "image",
+"url": "https://example.com/image.jpg",
+"title": "Image Title"
 }
+],
+"tags": ["array of blog tags"]
+}
+Note: Only include media and tags that are directly associated with the main blog post (index 0 in the data array). Do not include information from other articles or related content.
 """
 
 class ScrapeRequest(BaseModel):
