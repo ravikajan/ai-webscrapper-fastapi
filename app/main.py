@@ -18,9 +18,6 @@ import_routes("v1", "v1")
 # Import v2 routes
 import_routes("v2", "v2")
 
-@app.get("/")
-def read_root():
-    return {"Hello": "World"}
 
 # if __name__ == "__main__":
 #     import uvicorn
