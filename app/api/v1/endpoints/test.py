@@ -55,6 +55,13 @@ async def scrape_url_data(request: ScrapeRequest):
             bypass_cache=True,
         )
         
+        if result.extracted_content is None:
+            return {
+                "success": False,
+                "error": "No content was extracted",
+                "raw_content": None
+            }
+        
         try:
             extracted_data = json.loads(result.extracted_content)
         except json.JSONDecodeError as json_error:
@@ -76,5 +83,6 @@ async def scrape_url_data(request: ScrapeRequest):
     except Exception as e:
         return {
             "success": False,
-            "error": f"Scraping failed: {str(e)}"
+            "error": f"Scraping failed: {str(e)}",
+            "raw_content": getattr(result, 'extracted_content', None) if 'result' in locals() else None
         }
