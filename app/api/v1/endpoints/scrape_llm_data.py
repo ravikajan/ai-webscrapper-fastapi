@@ -8,23 +8,25 @@ from app.config import settings
 router = APIRouter()
 
 DEFAULT_INSTRUCTION = """
-Extract the following information from a given web page:
-1. Title: The main title of the article or page
-2. Description: A brief summary or description of the content
-3. Date: The publication date of the article
-4. Image: URL of the main image associated with the content
-
-Format the extracted data as a JSON object with the following structure:
-
-{
-  "title": "Extracted title",
-  "description": "Extracted description",
-  "date": "Extracted date",
-  "image": "URL of the extracted image",
-  "error": false
-}
-
-If unable to extract the data, set "error" to true.
+Extract all blog posts from the given content that contain dates. Provide this information in a structured format, including the full content of each post. Due to the potential length of the content, use an artifact to present this information. The output should be in JSON format. Here's an example of the expected structure:
+jsonCopy[
+  {
+    "date": "X days ago",
+    "headline": "Title of the blog post",
+    "content": "Full content of the blog post...",
+    "image_url": "https://example.com/image.jpg",
+    "slug_url": "/category/title-of-the-blog-post"
+  },
+  {
+    "date": "Y days ago",
+    "headline": "Another blog post title",
+    "content": "Full content of another blog post...",
+    "image_url": "https://example.com/another-image.jpg",
+    "slug_url": "/category/another-blog-post-title"
+  }
+]
+Ensure that all blog posts with dates are included, and that the full content is provided for each post.
+Is this more in line with what you were looking for? The prompt now includes a clear JSON example to illustrate the expected format of the output.
 """
 
 class ScrapeRequest(BaseModel):
