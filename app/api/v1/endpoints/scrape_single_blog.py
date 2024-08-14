@@ -6,7 +6,9 @@ router = APIRouter()
 
 
 DEFAULT_INSTRUCTION = """
-Extract a Main Single ingore single blog post with its full content and necessary data from the given source. Return the result as a JSON object.
+Extract a Main Single blog post with its full content and necessary data from the given source. Return the result as a JSON object.
+
+Ignore related or additional articles.
 
 JSON Example
 
