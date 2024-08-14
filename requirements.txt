@@ -1,7 +1,7 @@
 fastapi
    uvicorn
-   scrapegraphai
    httpx
    python-dotenv
    fastapi[standard]
    pydantic-settings
+   crawl4ai @ git+https://github.com/unclecode/crawl4ai.git

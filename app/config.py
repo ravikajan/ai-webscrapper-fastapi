@@ -36,9 +36,14 @@ class Settings(BaseSettings):
     # API folder path
     API_FOLDER: Path = Path(__file__).parent / "api"
 
+    # OpenAI API Key
+    OPENAI_API_KEY: str = ""
+
     class Config:
         env_file = ".env"
+        env_file_encoding = 'utf-8'
         case_sensitive = True
+        extra = "ignore"
 
 @lru_cache()
 def get_settings():
