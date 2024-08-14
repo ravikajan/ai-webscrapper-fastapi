@@ -36,10 +36,6 @@ class Settings(BaseSettings):
     # API folder path
     API_FOLDER: Path = Path(__file__).parent / "api"
 
-    # ScraperGraph-AI settings
-    SCRAPERGRAPH_API_KEY: str = "your-api-key-here"
-    SCRAPERGRAPH_API_URL: str = "https://api.scrapergraph.com/v1"
-
     class Config:
         env_file = ".env"
         case_sensitive = True
