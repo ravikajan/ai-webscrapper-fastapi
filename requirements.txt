@@ -1,0 +1,7 @@
+fastapi
+   uvicorn
+   scrapegraphai
+   httpx
+   python-dotenv
+   fastapi[standard]
+   pydantic-settings
