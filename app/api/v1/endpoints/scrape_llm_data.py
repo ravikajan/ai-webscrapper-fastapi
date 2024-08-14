@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, Field
-from app.core.scraping import scrape_url  # Updated import
+from app.core.llm_scraping import scrape_url  # Updated import
 
 router = APIRouter()
 
