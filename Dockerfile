@@ -2,12 +2,20 @@ FROM python:3.9
 
 WORKDIR /code
 
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    wget \
+    unzip \
+    chromium \
+    chromium-driver
+
+# Set up ChromeDriver
+ENV CHROMEDRIVER_DIR /usr/bin
+ENV CHROME_BIN /usr/bin/chromium
+
 COPY ./requirements.txt /code/requirements.txt
 
 RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
-
-# Install Playwright
-RUN playwright install
 
 COPY ./app /code/app
 
